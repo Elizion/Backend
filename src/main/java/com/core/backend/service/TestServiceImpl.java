@@ -18,12 +18,16 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.jxls.reader.ReaderConfig;
 import org.jxls.reader.XLSReadMessage;
 import org.jxls.reader.XLSReadStatus;
 import org.jxls.reader.XLSReader;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.core.backend.model.ParentModel;
@@ -33,10 +37,35 @@ import com.core.backend.util.ServiceUtils;
 import com.core.backend.util.JxlsDateConverter;
 import com.monitorjbl.xlsx.StreamingReader;
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+
 
 @Service
 public class TestServiceImpl implements TestService {
 
+	private static final String SWPML = "SWPML";
+	private static final String SWPEND = "SWPEND";
+	
+	@Autowired
+    private Environment env;
+
+    
+    public String propertyPml() {
+        return env.getProperty("uri.cenace.pml");
+    }
+    
+    public String propertyPend() {
+        return env.getProperty("uri.cenace.pend");
+    }   
+    
+    public String propertyFormat() {
+        return env.getProperty("uri.cenace.format");
+    }   
+    
 	@Autowired
 	private TestRepository testRepository;
 
@@ -99,4 +128,88 @@ public class TestServiceImpl implements TestService {
 		}	
 		return loadedData;
 	}
+
+	@Override
+	public JSONObject getDataCenace(
+			String system, 
+			String process, 
+			List<String> listNode, 
+			String dateStart,
+			String dateEnd,
+			String typeNode) {
+		
+		RestTemplate restTemplate = new RestTemplate();
+		HttpHeaders headers = new HttpHeaders();		
+		headers.setContentType(MediaType.APPLICATION_JSON);		
+		HttpEntity<Object> entity = new HttpEntity<>(headers);
+		String response = null;
+		String claveNodoOrZonacarga = null;
+					
+		String uriPml = null;
+		List<String> listaNodos = new ArrayList<String>(); 			
+		for(String item: listNode) {			
+			String[] parts = item.split("_");
+			String nodo = parts[0]; 
+			listaNodos.add(nodo);
+		}					
+		if(typeNode.equals(SWPML)) {				
+			uriPml = this.propertyPml();				
+		} else if(typeNode.equals(SWPEND)) {				
+			uriPml = this.propertyPend();			
+		}			
+		String format = this.propertyFormat();			
+		String nodes = String.join(",", listaNodos);			
+		String url = uriPml+"/"+system+"/"+process+"/"+nodes+"/"+dateStart+"/"+dateEnd+"/"+format;
+					
+		ResponseEntity<String> responseService = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+		response = responseService.getBody();					    
+	 
+		String precio = null;
+		JSONObject jsonObject = new JSONObject(response);
+		JSONArray resultados = (JSONArray) jsonObject.get("Resultados");
+		
+		for(int i=0; i < resultados.length(); i++) {
+			
+			if(typeNode.equals(SWPEND)) {			    	
+	    		claveNodoOrZonacarga = resultados.getJSONObject(i).getString("zona_carga");
+	    		System.out.println(claveNodoOrZonacarga);
+	    	} else if(typeNode.equals(SWPML)) {			    	
+	    		claveNodoOrZonacarga = resultados.getJSONObject(i).getString("clv_nodo");
+	    		System.out.println(claveNodoOrZonacarga);
+	    	}
+			
+			JSONObject myResponse = resultados.getJSONObject(i);        
+	        JSONArray valores = (JSONArray) myResponse.get("Valores");	        
+	        
+        	for(int v = 0; v < valores.length(); v++) {
+        		
+        		if(typeNode.equals(SWPEND)) {			    			        	
+	        		precio = valores.getJSONObject(v).getString("pz");
+	        		System.out.println(precio);
+	        		precio = valores.getJSONObject(v).getString("pz_ene");
+	        		System.out.println(precio);
+	        		precio = valores.getJSONObject(v).getString("pz_per");
+	        		System.out.println(precio);
+	        		precio = valores.getJSONObject(v).getString("pz_cng");
+	        		System.out.println(precio);
+		    	} else if(typeNode.equals(SWPML)) {		    		       		
+	        		precio = valores.getJSONObject(v).getString("pml");
+	        		System.out.println(precio);
+	        		precio = valores.getJSONObject(v).getString("pml_ene");
+	        		System.out.println(precio);
+	        		precio = valores.getJSONObject(v).getString("pml_per");
+	        		System.out.println(precio);
+	        		precio = valores.getJSONObject(v).getString("pml_cng");
+	        		System.out.println(precio);
+		    	}								    	        		
+	        		
+        	}
+        	
+		}
+			
+		
+		return jsonObject;
+			
+	}
+	
 }

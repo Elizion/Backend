@@ -8,16 +8,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.core.backend.model.CenaceRequest;
 import com.core.backend.model.ParentModel;
 import com.core.backend.service.TestService;
 import com.core.backend.util.ResponseHandler;
+import com.google.gson.Gson;
 
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,7 +30,7 @@ import org.slf4j.LoggerFactory;
 public class TestController {
 
 	private static final Logger logger = LoggerFactory.getLogger(TestController.class);
-
+	
 	@Autowired
 	public TestService testService;
 
@@ -39,7 +43,7 @@ public class TestController {
 			dateNow = this.testService.getDateNow();
 			logger.debug("Action completed successfully.");
 		} catch (Exception e) {
-			return ResponseHandler.generateResponseModel("Error", HttpStatus.INTERNAL_SERVER_ERROR, e.toString());
+			return ResponseHandler.generateResponseModel("Error.", HttpStatus.INTERNAL_SERVER_ERROR, e.toString());
 		}
 		return ResponseHandler.generateResponseModel("Fecha actual.", HttpStatus.OK, dateNow);
 	}
@@ -51,7 +55,7 @@ public class TestController {
 		try {
 			nameSheets = this.testService.getNameSheets(file);
 		} catch (Exception e) {			                                            
-			return ResponseHandler.generateResponseModel(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, null);
+			return ResponseHandler.generateResponseModel("Error.", HttpStatus.INTERNAL_SERVER_ERROR, null);
 		}
 		return ResponseHandler.generateResponseModel("El archivo fue leido correctamente.", HttpStatus.OK, nameSheets);
 	}
@@ -62,7 +66,7 @@ public class TestController {
 		try {
 			this.testService.uploadBigFile(file);
 		} catch (Exception e) {			                                            
-			return ResponseHandler.generateResponseModel(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, null);
+			return ResponseHandler.generateResponseModel("Error.", HttpStatus.INTERNAL_SERVER_ERROR, null);
 		}
 		return ResponseHandler.generateResponseModel("El archivo fue leido correctamente.", HttpStatus.OK, file.getSize());
 	}
@@ -77,9 +81,44 @@ public class TestController {
 				System.out.println(data.getSheetName() + " " + data.getHeaderName() + " " + data.getListChildModel().size());
 			}			
 		} catch (Exception e) {			                                            
-			return ResponseHandler.generateResponseModel(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+			return ResponseHandler.generateResponseModel("Error.", HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
 		}		
-		return ResponseHandler.generateResponseModel("El archivo fue leido correctamente.", HttpStatus.OK, loadedData);		
+		return ResponseHandler.generateResponseModel("El archivo fue leido correctamente.", HttpStatus.OK, loadedData);	
 	}
 
+	@GetMapping("/cenace/process")
+	@ResponseBody
+	public ResponseEntity<?> procesarPML(@RequestBody CenaceRequest request) {
+		
+		String system = request.getSystem();
+		String process = request.getProcess();
+		List<String> listNode = request.getListNode();
+		String dateStart = request.getDateStart();
+		String dateEnd = request.getDateEnd();
+		String typeNode = request.getTypeNode();
+		
+		System.out.println(system);
+		System.out.println(process);
+		System.out.println(listNode);
+		System.out.println(dateStart);
+		System.out.println(dateEnd);
+		System.out.println(typeNode);
+		
+		String json = null;
+		Gson gson = new Gson();
+		JSONObject response = null;
+		
+		try {
+				
+			response = this.testService.getDataCenace(system, process, listNode, dateStart, dateEnd, typeNode);
+			json = gson.toJson(response);
+
+		} catch (Throwable e) {
+			return ResponseHandler.generateResponseModel("Error.", HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());	
+		} 
+			
+		return ResponseHandler.generateResponseModel("El consumo se ha realizado correctamente.", HttpStatus.OK, json);
+		
+    }
+	
 }
