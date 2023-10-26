@@ -22,4 +22,6 @@ public interface TestService {
 
 	public JSONObject getDataCenace(String system, String process, List<String> listNode, String dateStart, String dateEnd, String typeNode);
 
+	public boolean getOpenBrowser() throws InterruptedException;
+
 }

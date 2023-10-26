@@ -19,9 +19,9 @@ import com.core.backend.model.CenaceRequest;
 import com.core.backend.model.ParentModel;
 import com.core.backend.service.TestService;
 import com.core.backend.util.ResponseHandler;
-import com.google.gson.Gson;
 
 import org.json.JSONObject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,6 +34,11 @@ public class TestController {
 	@Autowired
 	public TestService testService;
 
+	@RequestMapping("/")
+	public @ResponseBody String greeting() {
+		return "Hello, World";
+	}
+	
 	@GetMapping("/dateNow")
 	@ResponseBody
 	public ResponseEntity<?> getDateNow() {
@@ -104,21 +109,30 @@ public class TestController {
 		System.out.println(dateEnd);
 		System.out.println(typeNode);
 		
-		String json = null;
-		Gson gson = new Gson();
 		JSONObject response = null;
 		
 		try {
 				
 			response = this.testService.getDataCenace(system, process, listNode, dateStart, dateEnd, typeNode);
-			json = gson.toJson(response);
 
 		} catch (Throwable e) {
 			return ResponseHandler.generateResponseModel("Error.", HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());	
 		} 
 			
-		return ResponseHandler.generateResponseModel("El consumo se ha realizado correctamente.", HttpStatus.OK, json);
+		return ResponseHandler.generateResponseModel("El consumo se ha realizado correctamente.", HttpStatus.OK, response);
 		
+    }
+	
+	@GetMapping("/selenium")
+	@ResponseBody
+	public ResponseEntity<?> selenium() {		
+		boolean isOpenBrowser = false;		
+		try {	
+			isOpenBrowser = this.testService.getOpenBrowser();			
+		} catch (Throwable e) {
+			return ResponseHandler.generateResponseModel("Error.", HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());	
+		} 		
+		return ResponseHandler.generateResponseModel("Selenium ha descargado la información de los precios.", HttpStatus.OK, isOpenBrowser);		
     }
 	
 }

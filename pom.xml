@@ -146,16 +146,35 @@
 		</dependency>
 
 		<dependency>
-		    <groupId>com.google.code.gson</groupId>
-		    <artifactId>gson</artifactId>
-		</dependency>
-
-		<dependency>
 		    <groupId>org.json</groupId>
 		    <artifactId>json</artifactId>
 		    <version>20231013</version>
 		</dependency>
+	
+		<dependency>
+			<groupId>com.deque.html.axe-core</groupId>
+			<artifactId>selenium</artifactId>
+			<version>4.1.1</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+		<dependency>
+		    <groupId>org.junit.jupiter</groupId>
+		    <artifactId>junit-jupiter-api</artifactId>		    
+		    <scope>test</scope>
+		</dependency>
 
+		<!--
+		<dependency>
+        	<groupId>org.seleniumhq.selenium</groupId>
+        	<artifactId>selenium-java</artifactId>
+    	</dependency>
+    	
+    	<dependency>
+	    	<groupId>org.seleniumhq.selenium</groupId>
+        	<artifactId>selenium-support</artifactId>
+    	</dependency>
+		-->
 	</dependencies>
 
 	<build>

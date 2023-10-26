@@ -13,5 +13,25 @@
     "name": "uri.cenace.format",
     "type": "java.lang.String",
     "description": "A description for 'uri.cenace.format'"
+  },
+  {
+    "name": "driver.chrome.name",
+    "type": "java.lang.String",
+    "description": "A description for 'driver.chrome.name'"
+  },
+  {
+    "name": "driver.chrome.software",
+    "type": "java.lang.String",
+    "description": "A description for 'driver.chrome.software'"
+  },
+  {
+    "name": "driver.gecko.software",
+    "type": "java.lang.String",
+    "description": "A description for 'driver.gecko.software'"
+  },
+  {
+    "name": "driver.gecko.name",
+    "type": "java.lang.String",
+    "description": "A description for 'driver.gecko.name'"
   }
 ]}

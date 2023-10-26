@@ -12,18 +12,22 @@ import java.util.Map;
 
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.Converter;
+
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 import org.jxls.reader.ReaderConfig;
 import org.jxls.reader.XLSReadMessage;
 import org.jxls.reader.XLSReadStatus;
 import org.jxls.reader.XLSReader;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
@@ -43,6 +47,10 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 
 @Service
 public class TestServiceImpl implements TestService {
@@ -53,6 +61,8 @@ public class TestServiceImpl implements TestService {
 	@Autowired
     private Environment env;
 
+	@Autowired
+	private TestRepository testRepository;
     
     public String propertyPml() {
         return env.getProperty("uri.cenace.pml");
@@ -64,11 +74,24 @@ public class TestServiceImpl implements TestService {
     
     public String propertyFormat() {
         return env.getProperty("uri.cenace.format");
-    }   
+    }
     
-	@Autowired
-	private TestRepository testRepository;
-
+    public String propertyNameDriverChrome() {
+        return env.getProperty("driver.chrome.name");
+    }
+    
+    public String propertyDriverChrome() {
+        return env.getProperty("driver.chrome.software");
+    }
+    
+    public String propertyNameDriverGecko() {
+        return env.getProperty("driver.gecko.name");
+    }
+    
+    public String propertyDriverGecko() {
+        return env.getProperty("driver.gecko.software");
+    }
+    
 	@Override
 	public Date getDateNow() {
 		return this.testRepository.getDateNow();
@@ -210,6 +233,53 @@ public class TestServiceImpl implements TestService {
 		
 		return jsonObject;
 			
+	}
+
+	@Override
+	public boolean getOpenBrowser() {
+		
+		boolean downloadPriceEnergy = false;
+		
+		try {
+
+			String propertyNameDriverChrome = propertyNameDriverGecko();
+		    String propertyDriverChrome = propertyDriverGecko();	    	
+		    
+			System.setProperty(propertyNameDriverChrome, propertyDriverChrome);
+			
+			WebDriver driver = new FirefoxDriver();
+			driver.manage().window().maximize();
+			
+			driver.navigate().to("https://www.cenace.gob.mx/Paginas/SIM/Reportes/PreEnerServConMTR.aspx");
+			driver.manage().window().maximize();
+			
+			Thread.sleep(3000);
+			Select htmlSelectA = new Select(driver.findElement(By.id("ContentPlaceHolder1_ddlReporte")));
+			htmlSelectA.selectByVisibleText("Precios de Servicios Conexos MTR");	
+			
+			Thread.sleep(3000);
+			Select htmlSelectB = new Select(driver.findElement(By.id("ContentPlaceHolder1_ddlPeriodicidad")));
+			htmlSelectB.selectByVisibleText("Diaria");
+			
+			Thread.sleep(3000);
+			Select htmlSelectC = new Select(driver.findElement(By.id("ContentPlaceHolder1_ddlSistema")));
+			htmlSelectC.selectByVisibleText("BCA");
+			
+			Thread.sleep(3000);
+			driver.findElement(By.name("ctl00$ContentPlaceHolder1$btnDescargarZIP")).submit();
+			driver.findElement(By.id("ContentPlaceHolder1_btnDescargarZIP")).click();	
+			
+			Thread.sleep(3000);
+			driver.close();
+			
+			downloadPriceEnergy = true;
+			
+		} catch (InterruptedException e) {
+			System.err.println(e.getMessage());
+		}
+		
+		return downloadPriceEnergy;
+		
 	}
 	
 }
