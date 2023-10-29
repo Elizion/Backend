@@ -1,6 +1,6 @@
 package com.core.backend.service;
 
-public abstract class Figure {
+public abstract class FigureService {
 
 	public abstract float calculateArea(float radio);
 	

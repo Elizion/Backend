@@ -39,7 +39,7 @@ public class TestController {
 		return "Hello, World";
 	}
 	
-	@GetMapping("/dateNow")
+	@GetMapping("/date/now")
 	@ResponseBody
 	public ResponseEntity<?> getDateNow() {
 		Date dateNow = null;

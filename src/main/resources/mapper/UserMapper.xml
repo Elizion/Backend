@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.core.backend.mapper.UserMapper">
+
+    <select id="getDateNow" resultType="java.util.Date">
+        SELECT NOW()
+    </select>
+       
+	<select id="getUserByUsername" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM sistema_db.user
+        WHERE username = #{username}        
+    </select>
+    
+	<insert id="createdUser">
+	    INSERT INTO sistema_db.user(
+	    	username,
+	    	password,
+	    	enabled,
+	    	created_at, 
+	    	updated_at) 
+	    VALUES (
+	    	#{userModel.username},
+	    	#{userModel.password},
+	    	#{userModel.enabled}, 
+	    	NOW(), 
+	    	NOW())
+	</insert>
+    
+</mapper>

@@ -25,13 +25,53 @@
     "description": "A description for 'driver.chrome.software'"
   },
   {
+    "name": "driver.gecko.name",
+    "type": "java.lang.String",
+    "description": "A description for 'driver.gecko.name'"
+  },
+  {
     "name": "driver.gecko.software",
     "type": "java.lang.String",
     "description": "A description for 'driver.gecko.software'"
   },
   {
-    "name": "driver.gecko.name",
+    "name": "app.jwtSecret",
     "type": "java.lang.String",
-    "description": "A description for 'driver.gecko.name'"
+    "description": "A description for 'app.jwtSecret'"
+  },
+  {
+    "name": "app.jwtExpirationInMs",
+    "type": "java.lang.String",
+    "description": "A description for 'app.jwtExpirationInMs'"
+  },
+  {
+    "name": "app.cors.allowedOrigins",
+    "type": "java.lang.String",
+    "description": "A description for 'app.cors.allowedOrigins'"
+  },
+  {
+    "name": "app.jwtSecret",
+    "type": "java.lang.String",
+    "description": "A description for 'app.jwtSecret'"
+  },
+  {
+    "name": "app.jwtExpirationInMs",
+    "type": "java.lang.String",
+    "description": "A description for 'app.jwtExpirationInMs'"
+  },
+  {
+    "name": "security.basic.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'security.basic.enabled'"
+  },
+  {
+    "name": "security.ignored",
+    "type": "java.lang.String",
+    "description": "A description for 'security.ignored'"
+  },
+  {
+    "name": "management.security.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'management.security.enabled'"
   }
 ]}

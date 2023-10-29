@@ -1,8 +1,8 @@
 package com.core.backend.model;
 
-import com.core.backend.service.Figure;
+import com.core.backend.service.FigureService;
 
-public class Circle extends Figure {
+public class Circle extends FigureService {
 
 	@Override	
 	public float calculateArea(float radio) {

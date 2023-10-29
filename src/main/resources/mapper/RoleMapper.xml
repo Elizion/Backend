@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.core.backend.mapper.RoleMapper">
+
+	<resultMap id="findByNameResult" 	type="com.core.backend.model.RoleModel">
+	  	<id 	property="idRole" 		column="id_role" />
+	  	<result property="name" 		column="name"/>
+	  	<result property="description" 	column="description"/>
+	</resultMap>
+
+	<select id="findByName" resultMap="findByNameResult">
+        SELECT 
+        	id_role, 
+        	name, 
+        	description 
+        FROM sistema_db.role
+		WHERE name = #{role}
+    </select>
+    
+</mapper>

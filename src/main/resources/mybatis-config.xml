@@ -26,7 +26,9 @@
     </typeAliases>
     
     <mappers>		
-		<mapper resource="mapper/TestMapper.xml"/>		
+		<mapper resource="mapper/TestMapper.xml"/>
+		<mapper resource="mapper/UserMapper.xml"/>
+		<mapper resource="mapper/RoleMapper.xml"/>
     </mappers>
     
 </configuration>
