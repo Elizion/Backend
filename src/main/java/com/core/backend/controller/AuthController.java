@@ -20,8 +20,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.core.backend.model.UserModel;
-import com.core.backend.reponse.JwtResponse;
-import com.core.backend.request.LoginRequest;
+import com.core.backend.payload.JwtResponse;
+import com.core.backend.payload.LoginRequest;
 import com.core.backend.util.ResponseHandler;
 import com.core.backend.util.ServiceUtils;
 

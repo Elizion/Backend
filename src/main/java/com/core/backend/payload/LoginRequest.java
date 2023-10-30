@@ -1,4 +1,4 @@
-package com.core.backend.request;
+package com.core.backend.payload;
 
 public class LoginRequest {
 	

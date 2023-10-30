@@ -1,4 +1,4 @@
-package com.core.backend.reponse;
+package com.core.backend.payload;
 
 public class MessageResponse {
 	  
