@@ -48,9 +48,9 @@ public class TestController {
 			dateNow = this.testService.getDateNow();
 			logger.debug("Action completed successfully.");
 		} catch (Exception e) {
-			return ResponseHandler.generateResponseModel("Error.", HttpStatus.INTERNAL_SERVER_ERROR, e.toString());
+			return ResponseHandler.generateResponseSuccess("Error.", HttpStatus.INTERNAL_SERVER_ERROR, e.toString());
 		}
-		return ResponseHandler.generateResponseModel("Fecha actual.", HttpStatus.OK, dateNow);
+		return ResponseHandler.generateResponseSuccess("Fecha actual.", HttpStatus.OK, dateNow);
 	}
 	
 	@PostMapping("/read/xlsx")
@@ -60,9 +60,9 @@ public class TestController {
 		try {
 			nameSheets = this.testService.getNameSheets(file);
 		} catch (Exception e) {			                                            
-			return ResponseHandler.generateResponseModel("Error.", HttpStatus.INTERNAL_SERVER_ERROR, null);
+			return ResponseHandler.generateResponseSuccess("Error.", HttpStatus.INTERNAL_SERVER_ERROR, null);
 		}
-		return ResponseHandler.generateResponseModel("El archivo fue leido correctamente.", HttpStatus.OK, nameSheets);
+		return ResponseHandler.generateResponseSuccess("El archivo fue leido correctamente.", HttpStatus.OK, nameSheets);
 	}
 	
 	@PostMapping("/read/big/xlsx")
@@ -71,9 +71,9 @@ public class TestController {
 		try {
 			this.testService.uploadBigFile(file);
 		} catch (Exception e) {			                                            
-			return ResponseHandler.generateResponseModel("Error.", HttpStatus.INTERNAL_SERVER_ERROR, null);
+			return ResponseHandler.generateResponseSuccess("Error.", HttpStatus.INTERNAL_SERVER_ERROR, null);
 		}
-		return ResponseHandler.generateResponseModel("El archivo fue leido correctamente.", HttpStatus.OK, file.getSize());
+		return ResponseHandler.generateResponseSuccess("El archivo fue leido correctamente.", HttpStatus.OK, file.getSize());
 	}
 
 	@PostMapping("/read/jxls/xlsx")
@@ -86,9 +86,9 @@ public class TestController {
 				System.out.println(data.getSheetName() + " " + data.getHeaderName() + " " + data.getListChildModel().size());
 			}			
 		} catch (Exception e) {			                                            
-			return ResponseHandler.generateResponseModel("Error.", HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+			return ResponseHandler.generateResponseSuccess("Error.", HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
 		}		
-		return ResponseHandler.generateResponseModel("El archivo fue leido correctamente.", HttpStatus.OK, loadedData);	
+		return ResponseHandler.generateResponseSuccess("El archivo fue leido correctamente.", HttpStatus.OK, loadedData);	
 	}
 
 	@GetMapping("/cenace/process")
@@ -116,10 +116,10 @@ public class TestController {
 			response = this.testService.getDataCenace(system, process, listNode, dateStart, dateEnd, typeNode);
 
 		} catch (Throwable e) {
-			return ResponseHandler.generateResponseModel("Error.", HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());	
+			return ResponseHandler.generateResponseSuccess("Error.", HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());	
 		} 
 			
-		return ResponseHandler.generateResponseModel("El consumo se ha realizado correctamente.", HttpStatus.OK, response);
+		return ResponseHandler.generateResponseSuccess("El consumo se ha realizado correctamente.", HttpStatus.OK, response);
 		
     }
 	
@@ -130,9 +130,9 @@ public class TestController {
 		try {	
 			isOpenBrowser = this.testService.getOpenBrowser();			
 		} catch (Throwable e) {
-			return ResponseHandler.generateResponseModel("Error.", HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());	
+			return ResponseHandler.generateResponseSuccess("Error.", HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());	
 		} 		
-		return ResponseHandler.generateResponseModel("Selenium ha descargado la información de los precios.", HttpStatus.OK, isOpenBrowser);		
+		return ResponseHandler.generateResponseSuccess("Selenium ha descargado la información de los precios.", HttpStatus.OK, isOpenBrowser);		
     }
 	
 }

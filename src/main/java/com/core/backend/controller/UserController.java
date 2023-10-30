@@ -33,9 +33,9 @@ public class UserController {
 		try {
 			dateNow = this.userService.getDateNow();
 		} catch (RuntimeException e) {
-			return ResponseHandler.generateResponseModel(MessageEnum.GET_DATE_ERROR.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, e.toString());
+			return ResponseHandler.generateResponseSuccess(MessageEnum.GET_DATE_ERROR.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, e.toString());
 		}
-		return ResponseHandler.generateResponseModel(MessageEnum.GET_DATE_OK.getMessage(), HttpStatus.OK, dateNow);
+		return ResponseHandler.generateResponseSuccess(MessageEnum.GET_DATE_OK.getMessage(), HttpStatus.OK, dateNow);
 	}
 	
 }

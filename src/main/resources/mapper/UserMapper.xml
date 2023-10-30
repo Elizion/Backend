@@ -6,24 +6,48 @@
         SELECT NOW()
     </select>
        
-	<select id="getUserByUsername" resultType="java.lang.Integer">
-        SELECT COUNT(1) FROM sistema_db.user
-        WHERE username = #{username}        
+	<select id="findByUsername" resultType="java.lang.String">
+		SELECT  
+			username
+		FROM sistema_db.user
+        WHERE username = #{username} 
     </select>
     
-	<insert id="createdUser">
+	<insert id="createdUser" parameterType="UserModel" useGeneratedKeys="true" keyProperty="userModel.idUser" keyColumn="id_user">
 	    INSERT INTO sistema_db.user(
 	    	username,
 	    	password,
+	    	email,
 	    	enabled,
 	    	created_at, 
 	    	updated_at) 
 	    VALUES (
 	    	#{userModel.username},
 	    	#{userModel.password},
+	    	#{userModel.email},
 	    	#{userModel.enabled}, 
 	    	NOW(), 
 	    	NOW())
+	</insert>
+	
+	<insert id="createdUserImage">
+	    INSERT INTO sistema_db.user_picture(
+	    	id_user,
+	    	picture) 
+	    VALUES (
+	    	#{idUser},
+	    	#{b64})
+	</insert>
+	
+	<insert id="createdUserRoles" parameterType="java.util.Set">
+	    INSERT INTO sistema_db.user_role (
+	    id_user,
+	    id_role)
+	    VALUES
+	    <foreach collection="userModel.roles" item="role" index="index" open="(" separator="),("  close=")">
+			#{userModel.idUser},
+	        #{role.idRole}
+	    </foreach>
 	</insert>
     
 </mapper>

@@ -18,15 +18,27 @@ public class UserRepositoryImpl extends GenericRepository implements UserReposit
 	}
 
 	@Override
-	public void createdUser(UserModel userModel) throws PersistenceException {
+	public Long createdUser(UserModel userModel) throws PersistenceException {
 		UserMapper mapper = super.getSqlSession().getMapper( UserMapper.class );
-		mapper.createdUser(userModel);
+		return mapper.createdUser(userModel);
 	}
 
 	@Override
-	public UserModel getUserByUsername(String username) throws PersistenceException {
+	public String findByUsername(String username) throws PersistenceException {
 		UserMapper mapper = super.getSqlSession().getMapper( UserMapper.class );
-		return mapper.getUserByUsername(username);
+		return mapper.findByUsername(username);
+	}
+
+	@Override
+	public void createdUserPicture(Long idUser, String b64) {
+		UserMapper mapper = super.getSqlSession().getMapper( UserMapper.class );
+		mapper.createdUserImage(idUser, b64);		
+	}
+
+	@Override
+	public void createdUserRoles(UserModel userModel) {
+		UserMapper mapper = super.getSqlSession().getMapper( UserMapper.class );
+		mapper.createdUserRoles(userModel);
 	}
 
 }

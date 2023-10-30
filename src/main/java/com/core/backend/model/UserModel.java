@@ -2,33 +2,28 @@ package com.core.backend.model;
 
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 public class UserModel {
-	
-	@JsonIgnore
+		
 	public Long idUser;
 	public String username;
 	public String email;
 	public String password;
 	public Boolean enabled;
+	public String picture;
 	public Set<RoleModel> roles;
 	
-	public UserModel(String username, String email, String password, Boolean enabled) {
+	public UserModel(String username, String email, Boolean enabled) {
 		this.username 	= username;
         this.email 		= email;
-        this.password 	= password;
         this.enabled 	= enabled;
 	}
 
 	public Long getIdUser() {
 		return idUser;
 	}
-
 	public void setIdUser(Long idUser) {
 		this.idUser = idUser;
 	}
-
 	public String getUsername() {
 		return username;
 	}
@@ -52,6 +47,12 @@ public class UserModel {
 	}
 	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
+	}
+	public String getPicture() {
+		return picture;
+	}
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 	public Set<RoleModel> getRoles() {
 		return roles;

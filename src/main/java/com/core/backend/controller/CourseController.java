@@ -30,7 +30,7 @@ public class CourseController {
 		} catch (Exception e) {			
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);			
 		}				
-		return ResponseHandler.generateResponseModel("End point positiveNegativeZero.", HttpStatus.OK, typeNumber);		
+		return ResponseHandler.generateResponseSuccess("End point positiveNegativeZero.", HttpStatus.OK, typeNumber);		
 	}	
     
 	@GetMapping("/speedConverter")
@@ -42,7 +42,7 @@ public class CourseController {
 		} catch (Exception e) {						
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);			
 		}				
-		return ResponseHandler.generateResponseModel("End point speedConverter", HttpStatus.OK, conversion);		
+		return ResponseHandler.generateResponseSuccess("End point speedConverter", HttpStatus.OK, conversion);		
 	}
 	
 	@GetMapping("/printMegaBytesAndKiloBytes")
@@ -54,7 +54,7 @@ public class CourseController {
 		} catch (Exception e) {						
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);			
 		}		
-		return ResponseHandler.generateResponseModel("End point printMegaBytesAndKiloBytes", HttpStatus.OK, result);		
+		return ResponseHandler.generateResponseSuccess("End point printMegaBytesAndKiloBytes", HttpStatus.OK, result);		
 	}
 
 	@GetMapping("/barkingDog")
@@ -66,7 +66,7 @@ public class CourseController {
 		} catch (Exception e) {						
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);			
 		}		
-		return ResponseHandler.generateResponseModel("End point barkingDog", HttpStatus.OK, result);		
+		return ResponseHandler.generateResponseSuccess("End point barkingDog", HttpStatus.OK, result);		
 	}
 	
 	@GetMapping("/isLeapYear")
@@ -78,7 +78,7 @@ public class CourseController {
 		} catch (Exception e) {						
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);			
 		}		
-		return ResponseHandler.generateResponseModel("End point isLeapYear", HttpStatus.OK, result);		
+		return ResponseHandler.generateResponseSuccess("End point isLeapYear", HttpStatus.OK, result);		
 	}
 
 	@GetMapping("/areEqualByThreeDecimalPlaces")
@@ -90,7 +90,7 @@ public class CourseController {
 		} catch (Exception e) {						
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);			
 		}		
-		return ResponseHandler.generateResponseModel("End point areEqualByThreeDecimalPlaces", HttpStatus.OK, result);		
+		return ResponseHandler.generateResponseSuccess("End point areEqualByThreeDecimalPlaces", HttpStatus.OK, result);		
 	}
 	
 	@GetMapping("/hasEqualSum")
@@ -102,7 +102,7 @@ public class CourseController {
 		} catch (Exception e) {						
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);			
 		}		
-		return ResponseHandler.generateResponseModel("End point hasEqualSum", HttpStatus.OK, result);		
+		return ResponseHandler.generateResponseSuccess("End point hasEqualSum", HttpStatus.OK, result);		
 	}
 
 	@GetMapping("/hasTeen")
@@ -115,7 +115,7 @@ public class CourseController {
 		} catch (Exception e) {						
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);			
 		}		
-		return ResponseHandler.generateResponseModel("End point hasTeen", HttpStatus.OK, result);		
+		return ResponseHandler.generateResponseSuccess("End point hasTeen", HttpStatus.OK, result);		
 	}
 	
 	@GetMapping("/isTeen")
@@ -127,7 +127,7 @@ public class CourseController {
 		} catch (Exception e) {						
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);			
 		}		
-		return ResponseHandler.generateResponseModel("End point isTeen", HttpStatus.OK, result);		
+		return ResponseHandler.generateResponseSuccess("End point isTeen", HttpStatus.OK, result);		
 	}
 	
 	@GetMapping("/areaCircle")
@@ -139,7 +139,7 @@ public class CourseController {
 		} catch (Exception e) {						
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);			
 		}		
-		return ResponseHandler.generateResponseModel("End point areaCircle", HttpStatus.OK, result);		
+		return ResponseHandler.generateResponseSuccess("End point areaCircle", HttpStatus.OK, result);		
 	}
 	
 	@GetMapping("/areaRectangle")
@@ -151,7 +151,7 @@ public class CourseController {
 		} catch (Exception e) {						
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);			
 		}		
-		return ResponseHandler.generateResponseModel("End point areaRectangle", HttpStatus.OK, result);		
+		return ResponseHandler.generateResponseSuccess("End point areaRectangle", HttpStatus.OK, result);		
 	}
 	
 	@GetMapping("/printYearsAndDays")
@@ -163,7 +163,7 @@ public class CourseController {
 		} catch (Exception e) {						
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);			
 		}		
-		return ResponseHandler.generateResponseModel("End point printYearsAndDays", HttpStatus.OK, resumen);		
+		return ResponseHandler.generateResponseSuccess("End point printYearsAndDays", HttpStatus.OK, resumen);		
 	}
 
 	@GetMapping("/printEqual")
@@ -175,7 +175,7 @@ public class CourseController {
 		} catch (Exception e) {						
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);			
 		}		
-		return ResponseHandler.generateResponseModel("End point printEqual", HttpStatus.OK, resumen);		
+		return ResponseHandler.generateResponseSuccess("End point printEqual", HttpStatus.OK, resumen);		
 	}
 	
 	@GetMapping("/isCatPlaying")
@@ -187,7 +187,7 @@ public class CourseController {
 		} catch (Exception e) {						
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);			
 		}		
-		return ResponseHandler.generateResponseModel("End point isCatPlaying", HttpStatus.OK, result);		
+		return ResponseHandler.generateResponseSuccess("End point isCatPlaying", HttpStatus.OK, result);		
 	}
 	
 	@GetMapping("/printNumberInWord")
@@ -199,7 +199,7 @@ public class CourseController {
 		} catch (Exception e) {						
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);			
 		}		
-		return ResponseHandler.generateResponseModel("End point printNumberInWord", HttpStatus.OK, result);		
+		return ResponseHandler.generateResponseSuccess("End point printNumberInWord", HttpStatus.OK, result);		
 	}
 		
 	@GetMapping("/getDaysInMonth")
@@ -211,7 +211,7 @@ public class CourseController {
 		} catch (Exception e) {						
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);			
 		}		
-		return ResponseHandler.generateResponseModel("End point getDaysInMonth", HttpStatus.OK, result);		
+		return ResponseHandler.generateResponseSuccess("End point getDaysInMonth", HttpStatus.OK, result);		
 	}
 
 	@GetMapping("/sumOdd")
@@ -223,7 +223,7 @@ public class CourseController {
 		} catch (Exception e) {						
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);			
 		}		
-		return ResponseHandler.generateResponseModel("End point sumOdd", HttpStatus.OK, result);		
+		return ResponseHandler.generateResponseSuccess("End point sumOdd", HttpStatus.OK, result);		
 	}
 
 	@GetMapping("/isPalindrome")
@@ -235,7 +235,7 @@ public class CourseController {
 		} catch (Exception e) {						
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);			
 		}		
-		return ResponseHandler.generateResponseModel("End point isPalindrome", HttpStatus.OK, result);		
+		return ResponseHandler.generateResponseSuccess("End point isPalindrome", HttpStatus.OK, result);		
 	}
 	
 	@GetMapping("/sumFirstAndLastDigit")
@@ -247,7 +247,7 @@ public class CourseController {
 		} catch (Exception e) {						
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);			
 		}		
-		return ResponseHandler.generateResponseModel("End point isPalindrome", HttpStatus.OK, result);		
+		return ResponseHandler.generateResponseSuccess("End point isPalindrome", HttpStatus.OK, result);		
 	}
 	
 	@GetMapping("/hasSharedDigit")
@@ -259,7 +259,7 @@ public class CourseController {
 		} catch (Exception e) {						
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);			
 		}		
-		return ResponseHandler.generateResponseModel("End point isPalindrome", HttpStatus.OK, result);		
+		return ResponseHandler.generateResponseSuccess("End point isPalindrome", HttpStatus.OK, result);		
 	}
 	
 	@GetMapping("/getEvenDigitSum")
@@ -271,7 +271,7 @@ public class CourseController {
 		} catch (Exception e) {						
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);			
 		}		
-		return ResponseHandler.generateResponseModel("End point isPalindrome", HttpStatus.OK, result);		
+		return ResponseHandler.generateResponseSuccess("End point isPalindrome", HttpStatus.OK, result);		
 	}
 	
 	@GetMapping("/hasSameLastDigit")
@@ -283,7 +283,7 @@ public class CourseController {
 		} catch (Exception e) {						
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);			
 		}		
-		return ResponseHandler.generateResponseModel("End point isPalindrome", HttpStatus.OK, result);		
+		return ResponseHandler.generateResponseSuccess("End point isPalindrome", HttpStatus.OK, result);		
 	}
 	
 	@GetMapping("/isValid")
@@ -295,7 +295,7 @@ public class CourseController {
 		} catch (Exception e) {						
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);			
 		}		
-		return ResponseHandler.generateResponseModel("End point isPalindrome", HttpStatus.OK, result);		
+		return ResponseHandler.generateResponseSuccess("End point isPalindrome", HttpStatus.OK, result);		
 	}
 
 	@GetMapping("/encapsulation")
@@ -326,7 +326,7 @@ public class CourseController {
 		} catch (Exception e) {						
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);			
 		}				
-		return ResponseHandler.generateResponseModel("End point isPalindrome", HttpStatus.OK, result);	
+		return ResponseHandler.generateResponseSuccess("End point isPalindrome", HttpStatus.OK, result);	
 	}
 	
 	@GetMapping("/abstract")
@@ -343,7 +343,7 @@ public class CourseController {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);			
 		}
 		
-		return ResponseHandler.generateResponseModel("End point isPalindrome", HttpStatus.OK, null);
+		return ResponseHandler.generateResponseSuccess("End point isPalindrome", HttpStatus.OK, null);
 		
 	}
 	

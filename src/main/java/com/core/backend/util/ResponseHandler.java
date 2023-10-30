@@ -26,7 +26,7 @@ public class ResponseHandler {
 	# \u00d1 -> Ñ
 	*/	
 	
-    public static ResponseEntity<Object> generateResponseModel(String message, HttpStatus status, Object response) {
+    public static ResponseEntity<Object> generateResponseSuccess(String message, HttpStatus status, Object response) {
     	Map<String, Object> map = new HashMap<String, Object>();
             				map.put("message", message);
             				map.put("status", status.value());

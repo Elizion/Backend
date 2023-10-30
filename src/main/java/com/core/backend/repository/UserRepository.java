@@ -10,8 +10,12 @@ public interface UserRepository {
 
 	public Date getDateNow() throws PersistenceException;
 
-	public void createdUser(UserModel userModel) throws PersistenceException;
+	public Long createdUser(UserModel userModel) throws PersistenceException;
 
-	public UserModel getUserByUsername(String username) throws PersistenceException;
+	public String findByUsername(String username) throws PersistenceException;
+
+	public void createdUserPicture(Long idUser, String b64);
+
+	public void createdUserRoles(UserModel userModel);
 
 }

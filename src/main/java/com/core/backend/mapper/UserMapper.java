@@ -12,8 +12,12 @@ public interface UserMapper {
 	
 	public Date getDateNow();
 	
-	public void createdUser(@Param("userModel") UserModel userModel);
+	public Long createdUser(@Param("userModel") UserModel userModel);
 
-	public UserModel getUserByUsername(@Param("username") String username);
+	public String findByUsername(@Param("username") String username);
+
+	public void createdUserImage(@Param("idUser") Long idUser, @Param("b64") String b64);
+
+	public void createdUserRoles(@Param("userModel") UserModel userModel);
 	
 }

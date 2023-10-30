@@ -15,6 +15,7 @@
         	description 
         FROM sistema_db.role
 		WHERE name = #{role}
+		AND enabled = 1
     </select>
     
 </mapper>

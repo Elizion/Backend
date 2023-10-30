@@ -147,4 +147,20 @@ public class ServiceUtils {
 		return 0;
 	}
 
+	/*
+	^(?=.*[A-Z])(?=.*\d).{6}$
+	 ↑          ↑       ↑
+	 │          │       six characters in total
+	 │          at least one digit
+	 at least one upper-case letter
+	*/
+	
+	public static boolean matchesPolicy(String pwd) {	
+		String pattern = "^(?=.*[A-Z])(?=.*\\d).{6,}$";
+		if(pwd.matches(pattern)) {
+			return true;	
+		}
+		return false;
+	}
+	
 }
