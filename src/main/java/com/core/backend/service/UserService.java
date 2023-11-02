@@ -22,4 +22,6 @@ public interface UserService {
 
 	public void createdPasswordEncode(String password, UserModel userModel);
 
+	public UserModel findByUsernameAuth(String username) throws PersistenceException;
+
 }

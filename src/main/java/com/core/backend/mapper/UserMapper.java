@@ -19,5 +19,7 @@ public interface UserMapper {
 	public void createdUserImage(@Param("idUser") Long idUser, @Param("b64") String b64);
 
 	public void createdUserRoles(@Param("userModel") UserModel userModel);
+
+	public UserModel findByUsernameAuth(@Param("username") String username);
 	
 }

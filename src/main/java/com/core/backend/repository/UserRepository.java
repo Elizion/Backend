@@ -14,8 +14,10 @@ public interface UserRepository {
 
 	public String findByUsername(String username) throws PersistenceException;
 
-	public void createdUserPicture(Long idUser, String b64);
+	public void createdUserPicture(Long idUser, String b64) throws PersistenceException;
 
-	public void createdUserRoles(UserModel userModel);
+	public void createdUserRoles(UserModel userModel) throws PersistenceException;
+
+	public UserModel findByUsernameAuth(String username) throws PersistenceException;
 
 }

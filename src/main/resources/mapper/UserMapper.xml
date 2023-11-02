@@ -50,4 +50,16 @@
 	    </foreach>
 	</insert>
     
+	<resultMap id="findByUsernameAuthResult" type="com.core.backend.model.UserModel">
+	  	<id 	property="idUser" 		column="id_user" />
+	</resultMap>
+
+	<select id="findByUsernameAuth" resultMap="findByUsernameAuthResult">
+        SELECT 
+        	id_user
+        FROM sistema_db.user
+		WHERE username = #{username}
+		AND enabled = 1
+    </select>
+    
 </mapper>

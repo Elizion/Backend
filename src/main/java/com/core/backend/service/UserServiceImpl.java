@@ -8,7 +8,7 @@ import java.util.Set;
 
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired UserRepository userRepository;	
 	@Autowired RoleRepository roleRepository;	
-	@Autowired PasswordEncoder encoder;
+	//@Autowired PasswordEncoder encoder;
 	
 	@Override
 	public Date getDateNow() throws PersistenceException {
@@ -43,8 +43,9 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void createdPasswordEncode(String password, UserModel userModel) {
-		String passwordEncode = this.encoder.encode(password);
-		userModel.setPassword(passwordEncode);
+		//String passwordEncode = this.encoder.encode(password);
+		//userModel.setPassword(passwordEncode);
+		userModel.setPassword(password);
 	}
 	
 	@Override
@@ -86,6 +87,12 @@ public class UserServiceImpl implements UserService {
 		}		
 		userModel.setRoles(roles);
 		this.userRepository.createdUserRoles(userModel);
+	}
+
+	@Override
+	public UserModel findByUsernameAuth(String username) throws PersistenceException {
+		UserModel userModel = this.userRepository.findByUsernameAuth(username);
+		return userModel;
 	}
 	
 }
