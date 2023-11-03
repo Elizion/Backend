@@ -17,10 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.core.backend.model.CenaceRequest;
 import com.core.backend.model.ParentModel;
-import com.core.backend.model.UserModel;
-import com.core.backend.payload.LoginRequest;
 import com.core.backend.service.TestService;
-import com.core.backend.service.UserService;
 import com.core.backend.util.ResponseHandler;
 
 import org.json.JSONObject;
@@ -36,31 +33,11 @@ public class TestController {
 	
 	@Autowired
 	public TestService testService;
-	
-	@Autowired
-	public UserService userService;
 
 	@RequestMapping("/")
 	public @ResponseBody String greeting() {
 		return "Hello, World";
 	}
-	
-
-	@GetMapping("/find/user")
-	public ResponseEntity<?> findByUsernameAuth(@RequestBody LoginRequest loginRequest) {
-		
-		String username = loginRequest.getUsername();
-		String password = loginRequest.getPassword();
-		
-		System.out.println(username);
-		System.out.println(password);
-		
-		UserModel userModel = this.userService.findByUsernameAuth(username);
-		
-		return ResponseHandler.generateResponseSuccess("OK", HttpStatus.OK, userModel);
-		
-	}
-	
 	
 	@GetMapping("/date/now")
 	@ResponseBody

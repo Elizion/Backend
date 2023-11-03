@@ -2,7 +2,7 @@ package com.core.backend.model;
 
 import java.util.Set;
 
-public class UserModel {
+public class AuthModel {
 		
 	public Integer idUser;
 	public String username;
@@ -10,7 +10,7 @@ public class UserModel {
 	public String password;
 	public Boolean enabled;
 	public String picture;
-	public Set<RoleModel> roles;
+	public Set<UserRoleModel> rolesUser;
 		
 	public Integer getIdUser() {
 		return idUser;
@@ -47,12 +47,12 @@ public class UserModel {
 	}
 	public void setPicture(String picture) {
 		this.picture = picture;
+	}	
+	public Set<UserRoleModel> getRolesUser() {
+		return rolesUser;
 	}
-	public Set<RoleModel> getRoles() {
-		return roles;
-	}
-	public void setRoles(Set<RoleModel> roles) {
-		this.roles = roles;
+	public void setRolesUser(Set<UserRoleModel> rolesUser) {
+		this.rolesUser = rolesUser;
 	}
 	
 }

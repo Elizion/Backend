@@ -8,10 +8,11 @@ import java.util.Set;
 
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.core.backend.model.AuthModel;
 import com.core.backend.model.RoleEnum;
 import com.core.backend.model.RoleModel;
 import com.core.backend.model.UserModel;
@@ -24,7 +25,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired UserRepository userRepository;	
 	@Autowired RoleRepository roleRepository;	
-	//@Autowired PasswordEncoder encoder;
+	@Autowired PasswordEncoder encoder;
 	
 	@Override
 	public Date getDateNow() throws PersistenceException {
@@ -32,33 +33,32 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Long createdUser(UserModel userModel) throws PersistenceException {
+	public Integer createdUser(UserModel userModel) throws PersistenceException {
 		return this.userRepository.createdUser(userModel);
 	}
 
 	@Override
-	public String findByUsername(String username) throws PersistenceException {
-		return this.userRepository.findByUsername(username);
+	public String getUsername(String username) throws PersistenceException {
+		return this.userRepository.getUsername(username);
 	}
 
 	@Override
 	public void createdPasswordEncode(String password, UserModel userModel) {
-		//String passwordEncode = this.encoder.encode(password);
-		//userModel.setPassword(passwordEncode);
-		userModel.setPassword(password);
+		String passwordEncode = this.encoder.encode(password);
+		userModel.setPassword(passwordEncode);
 	}
 	
 	@Override
-	public void createdUserPicture(MultipartFile picture, Long idUser, UserModel userModel) throws Exception {
+	public void createdUserPicture(MultipartFile picture, UserModel userModel) throws Exception {
 		InputStream inputStream = picture.getInputStream();
 	    byte[] output = ServiceUtils.readFileFromStream(inputStream);
-		String b64 = Base64.getEncoder().encodeToString(output);							
-		this.userRepository.createdUserPicture(idUser, b64);
+		String b64 = Base64.getEncoder().encodeToString(output);					
+		this.userRepository.createdUserPicture(userModel.getIdUser(), b64);
 		userModel.setPicture(b64);
 	}
 
 	@Override
-	public void createdUserRoles(Set<String> rolesRequest, Long idUser, UserModel userModel) throws PersistenceException {		
+	public void createdUserRoles(Set<String> rolesRequest, UserModel userModel) throws PersistenceException {		
 		Set<RoleModel> roles = new HashSet<>();
 		Set<String> strRoles = rolesRequest;				
 		if (strRoles == null || strRoles.size() == 0) {			
@@ -90,8 +90,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserModel findByUsernameAuth(String username) throws PersistenceException {
-		UserModel userModel = this.userRepository.findByUsernameAuth(username);
+	public AuthModel getUserAuth(String username) throws PersistenceException {
+		AuthModel userModel = this.userRepository.getUserAuth(username);
 		return userModel;
 	}
 	

@@ -6,6 +6,7 @@ import org.apache.ibatis.exceptions.PersistenceException;
 import org.springframework.stereotype.Repository;
 
 import com.core.backend.mapper.UserMapper;
+import com.core.backend.model.AuthModel;
 import com.core.backend.model.UserModel;
 
 @Repository
@@ -18,19 +19,20 @@ public class UserRepositoryImpl extends GenericRepository implements UserReposit
 	}
 
 	@Override
-	public Long createdUser(UserModel userModel) throws PersistenceException {
-		UserMapper mapper = super.getSqlSession().getMapper( UserMapper.class );
-		return mapper.createdUser(userModel);
+	public Integer createdUser(UserModel userModel) throws PersistenceException {
+		UserMapper mapper = super.getSqlSession().getMapper( UserMapper.class );		
+		mapper.createdUser(userModel);
+		return userModel.getIdUser();
 	}
 
 	@Override
-	public String findByUsername(String username) throws PersistenceException {
+	public String getUsername(String username) throws PersistenceException {
 		UserMapper mapper = super.getSqlSession().getMapper( UserMapper.class );
-		return mapper.findByUsername(username);
+		return mapper.getUsername(username);
 	}
 
 	@Override
-	public void createdUserPicture(Long idUser, String b64) throws PersistenceException {
+	public void createdUserPicture(Integer idUser, String b64) throws PersistenceException {
 		UserMapper mapper = super.getSqlSession().getMapper( UserMapper.class );
 		mapper.createdUserImage(idUser, b64);		
 	}
@@ -42,9 +44,9 @@ public class UserRepositoryImpl extends GenericRepository implements UserReposit
 	}
 
 	@Override
-	public UserModel findByUsernameAuth(String username) throws PersistenceException {
+	public AuthModel getUserAuth(String username) throws PersistenceException {
 		UserMapper mapper = super.getSqlSession().getMapper( UserMapper.class );
-		return mapper.findByUsernameAuth(username);		
+		return mapper.getUserAuth(username);		
 	}
 
 }

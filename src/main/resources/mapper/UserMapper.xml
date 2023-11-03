@@ -6,26 +6,24 @@
         SELECT NOW()
     </select>
        
-	<select id="findByUsername" resultType="java.lang.String">
+	<select id="getUsername" resultType="java.lang.String">
 		SELECT  
 			username
 		FROM sistema_db.user
         WHERE username = #{username} 
     </select>
-    
-	<insert id="createdUser" parameterType="UserModel" useGeneratedKeys="true" keyProperty="userModel.idUser" keyColumn="id_user">
+
+	<insert id="createdUser" parameterType="com.core.backend.model.UserModel" useGeneratedKeys="true" keyProperty="userModel.idUser" keyColumn="id_user">
 	    INSERT INTO sistema_db.user(
 	    	username,
 	    	password,
 	    	email,
-	    	enabled,
 	    	created_at, 
 	    	updated_at) 
 	    VALUES (
 	    	#{userModel.username},
 	    	#{userModel.password},
 	    	#{userModel.email},
-	    	#{userModel.enabled}, 
 	    	NOW(), 
 	    	NOW())
 	</insert>
@@ -50,16 +48,39 @@
 	    </foreach>
 	</insert>
     
-	<resultMap id="findByUsernameAuthResult" type="com.core.backend.model.UserModel">
-	  	<id 	property="idUser" 		column="id_user" />
-	</resultMap>
-
-	<select id="findByUsernameAuth" resultMap="findByUsernameAuthResult">
+	<resultMap id="getUserAuthResult" type="AuthModel">
+		<id column="id_user" property="idUser"/>
+		<result column="username" property="username"/>
+		<result column="password" property="password"/>
+		<result column="email" property="email"/>
+		<collection property="rolesUser" column="{pIdUser=id_user}" select="getRolesByIdUser" />
+    </resultMap>
+    
+	<select id="getUserAuth" resultMap="getUserAuthResult">
         SELECT 
-        	id_user
+        	id_user,
+        	username,
+        	password,
+        	email
         FROM sistema_db.user
 		WHERE username = #{username}
-		AND enabled = 1
-    </select>
+	</select>
+
+	<resultMap id="getRolesByIdUserResult" type="UserRoleModel">
+		<id column="id_user" property="idUser"/>
+		<id column="id_role" property="idRole"/>
+		<result column="name" property="name"/>
+    </resultMap>
+    		
+	<select id="getRolesByIdUser" resultMap="getRolesByIdUserResult">        
+		SELECT 
+			B.id_user,
+			A.id_role, 
+			A.name
+		FROM sistema_db.role A
+		INNER JOIN sistema_db.user_role B
+		ON A.id_role = B.id_role
+		WHERE B.id_user =  #{pIdUser}
+	</select>
     
 </mapper>
