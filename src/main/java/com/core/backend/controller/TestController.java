@@ -34,11 +34,6 @@ public class TestController {
 	@Autowired
 	public TestService testService;
 
-	@RequestMapping("/")
-	public @ResponseBody String greeting() {
-		return "Hello, World";
-	}
-	
 	@GetMapping("/date/now")
 	@ResponseBody
 	public ResponseEntity<?> getDateNow() {

@@ -22,11 +22,6 @@ public class UserController {
 	@Autowired
 	public UserService userService;
 
-	@RequestMapping("/")
-	public @ResponseBody String greeting() {
-		return "Hello, World";
-	}
-	
 	@GetMapping("/date/now")	
 	public @ResponseBody ResponseEntity<?> getDateNow() {
 		Date dateNow = null;
