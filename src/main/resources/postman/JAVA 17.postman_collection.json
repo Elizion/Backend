@@ -1,0 +1,851 @@
+{
+	"info": {
+		"_postman_id": "4dc30048-8de1-408c-a6f1-4df7c99d66da",
+		"name": "JAVA 17",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13970381"
+	},
+	"item": [
+		{
+			"name": "positiveNegativeZero",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/course/positiveNegativeZero?number=-1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"course",
+						"positiveNegativeZero"
+					],
+					"query": [
+						{
+							"key": "number",
+							"value": "-1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "speedConverter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/course/speedConverter?kilometersPerHour=10.25",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"course",
+						"speedConverter"
+					],
+					"query": [
+						{
+							"key": "kilometersPerHour",
+							"value": "10.25"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "printMegaBytesAndKiloBytes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/course/printMegaBytesAndKiloBytes?kiloBytes=2500",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"course",
+						"printMegaBytesAndKiloBytes"
+					],
+					"query": [
+						{
+							"key": "kiloBytes",
+							"value": "2500"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "barkingDog",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/course/barkingDog?barking=true&hourOfDay=23",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"course",
+						"barkingDog"
+					],
+					"query": [
+						{
+							"key": "barking",
+							"value": "true"
+						},
+						{
+							"key": "hourOfDay",
+							"value": "23"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "isLeapYear",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/course/isLeapYear?year=2023",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"course",
+						"isLeapYear"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2023"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "areEqualByThreeDecimalPlaces",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/course/areEqualByThreeDecimalPlaces?num1=3.006&num2=3.006",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"course",
+						"areEqualByThreeDecimalPlaces"
+					],
+					"query": [
+						{
+							"key": "num1",
+							"value": "3.006"
+						},
+						{
+							"key": "num2",
+							"value": "3.006"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "hasEqualSum ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/course/hasEqualSum?a=1&b=2&c=3",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"course",
+						"hasEqualSum"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "1"
+						},
+						{
+							"key": "b",
+							"value": "2"
+						},
+						{
+							"key": "c",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "isTeen",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/course/isTeen?num4=13",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"course",
+						"isTeen"
+					],
+					"query": [
+						{
+							"key": "num4",
+							"value": "13"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "hasTeen",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/course/hasTeen?num1=1&num2=11&num3=22",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"course",
+						"hasTeen"
+					],
+					"query": [
+						{
+							"key": "num1",
+							"value": "1"
+						},
+						{
+							"key": "num2",
+							"value": "11"
+						},
+						{
+							"key": "num3",
+							"value": "22"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "areaCircle",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/course/areaCircle?radius=-9",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"course",
+						"areaCircle"
+					],
+					"query": [
+						{
+							"key": "radius",
+							"value": "-9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "areaRectangle",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/course/areaRectangle?x=13&y=2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"course",
+						"areaRectangle"
+					],
+					"query": [
+						{
+							"key": "x",
+							"value": "13"
+						},
+						{
+							"key": "y",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "printYearsAndDays",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/course/printYearsAndDays?minutes=561600",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"course",
+						"printYearsAndDays"
+					],
+					"query": [
+						{
+							"key": "minutes",
+							"value": "561600"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "printEqual",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/course/printEqual?num1=11&num2=1&num3=1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"course",
+						"printEqual"
+					],
+					"query": [
+						{
+							"key": "num1",
+							"value": "11"
+						},
+						{
+							"key": "num2",
+							"value": "1"
+						},
+						{
+							"key": "num3",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "isCatPlaying",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/course/isCatPlaying?summer=true&temperature=10",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"course",
+						"isCatPlaying"
+					],
+					"query": [
+						{
+							"key": "summer",
+							"value": "true"
+						},
+						{
+							"key": "temperature",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "printNumberInWord",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/course/printNumberInWord?number=0",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"course",
+						"printNumberInWord"
+					],
+					"query": [
+						{
+							"key": "number",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getDaysInMonth",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/course/getDaysInMonth?month=2&year=2024",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"course",
+						"getDaysInMonth"
+					],
+					"query": [
+						{
+							"key": "month",
+							"value": "2"
+						},
+						{
+							"key": "year",
+							"value": "2024"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sumOdd",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/course/sumOdd?start=0&end=2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"course",
+						"sumOdd"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "0"
+						},
+						{
+							"key": "end",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "isPalindrome",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/course/isPalindrome?number=102",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"course",
+						"isPalindrome"
+					],
+					"query": [
+						{
+							"key": "number",
+							"value": "102"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sumFirstAndLastDigit",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/course/sumFirstAndLastDigit?number=102",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"course",
+						"sumFirstAndLastDigit"
+					],
+					"query": [
+						{
+							"key": "number",
+							"value": "102"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "hasSharedDigit",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/course/hasSharedDigit?numOne=15&numTwo=55",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"course",
+						"hasSharedDigit"
+					],
+					"query": [
+						{
+							"key": "numOne",
+							"value": "15"
+						},
+						{
+							"key": "numTwo",
+							"value": "55"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getEvenDigitSum",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/course/getEvenDigitSum?number=2121",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"course",
+						"getEvenDigitSum"
+					],
+					"query": [
+						{
+							"key": "number",
+							"value": "2121"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "hasSameLastDigit",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/course/hasSameLastDigit?numOne=41&numTwo=22&numThree=71",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"course",
+						"hasSameLastDigit"
+					],
+					"query": [
+						{
+							"key": "numOne",
+							"value": "41"
+						},
+						{
+							"key": "numTwo",
+							"value": "22"
+						},
+						{
+							"key": "numThree",
+							"value": "71"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "numFour",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/course/isValid?numFour=10",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"course",
+						"isValid"
+					],
+					"query": [
+						{
+							"key": "numFour",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "encapsulation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/course/encapsulation?tonerLevelReq=0&duplexReq=true&pagesPrintedReq=0",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"course",
+						"encapsulation"
+					],
+					"query": [
+						{
+							"key": "tonerLevelReq",
+							"value": "0"
+						},
+						{
+							"key": "duplexReq",
+							"value": "true"
+						},
+						{
+							"key": "pagesPrintedReq",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "abstract",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/course/abstract?radio=60",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"course",
+						"abstract"
+					],
+					"query": [
+						{
+							"key": "radio",
+							"value": "60"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

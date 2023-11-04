@@ -5,6 +5,7 @@ import java.util.Date;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +18,12 @@ import io.jsonwebtoken.security.Keys;
 @Component
 public class JwtUtils {
 	
+	@Value("${app.jwt.secret}")
+	private String jwtSecret;
+
+	@Value("${app.jwt.expiration.ms}")
+	private int jwtExpirationMs;
+    
 	private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
 	public String generateJwtToken(Authentication authentication) {
@@ -24,12 +31,12 @@ public class JwtUtils {
 		UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
 
 		return Jwts.builder().setSubject((userPrincipal.getUsername())).setIssuedAt(new Date())
-				.setExpiration(new Date((new Date()).getTime() + 86400000L))
+				.setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
 				.signWith(key(), SignatureAlgorithm.HS256).compact();
 	}
 
 	private Key key() {
-		return Keys.hmacShaKeyFor(Decoders.BASE64.decode("======================Eli=Spring==========================="));
+		return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
 	}
 
 	public String getUserNameFromJwtToken(String token) {

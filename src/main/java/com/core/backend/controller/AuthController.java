@@ -60,7 +60,8 @@ public class AuthController {
 		userModel.setUsername(username);		
 		this.userService.createdPasswordEncode(password, userModel);		
 		Integer idUser = this.userService.createdUser(userModel);		
-		userModel.setIdUser(idUser);						
+		userModel.setIdUser(idUser);
+		userModel.setEnabled(true);
 		this.userService.createdUserPicture(picture, userModel);							
 		this.userService.createdUserRoles(rolesRequest, userModel);		
 		return ResponseHandler.generateResponseSuccess(MessageEnum.CREATE_USER_OK.getMessage(), HttpStatus.CREATED, userModel);		

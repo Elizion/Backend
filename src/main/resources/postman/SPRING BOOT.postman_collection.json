@@ -1,0 +1,298 @@
+{
+	"info": {
+		"_postman_id": "3e64aa48-aedb-449f-8717-a90bfcfaf758",
+		"name": "SPRING BOOT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13970381"
+	},
+	"item": [
+		{
+			"name": "DATE NOW",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/test/date/now",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"test",
+						"date",
+						"now"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POI READER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/DELL/Desktop/Test.xlsx"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/test/read/xlsx",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"test",
+						"read",
+						"xlsx"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "READ BIG EXCEL",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/DELL/Desktop/Poi.xlsx"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/test/read/big/xlsx",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"test",
+						"read",
+						"big",
+						"xlsx"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "JXLS READER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/DELL/Desktop/Jxls.xlsx"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/test/read/jxls/xlsx",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"test",
+						"read",
+						"jxls",
+						"xlsx"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CENACE CONSUME",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"system\": \"SIN\",\r\n    \"process\": \"MDA\",\r\n    \"listNode\": [\"01PLO-115\",\"08PCN-115\"],\r\n    \"dateStart\": \"2017/11/07\",\r\n    \"dateEnd\": \"2017/11/07\",\r\n    \"typeNode\": \"SWPML\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/test/cenace/process",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"test",
+						"cenace",
+						"process"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SELENIUM WEB DRIVER",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/test/selenium",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"test",
+						"selenium"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE_USER_FULL",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "picture",
+							"type": "file",
+							"src": "/C:/Users/DELL/Desktop/61452514_2062274363894763_204725667772760064_n.jpg"
+						},
+						{
+							"key": "username",
+							"value": "demo5",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "roles",
+							"value": "ROLE_ADMIN,ROLE_USER",
+							"type": "text"
+						},
+						{
+							"key": "enabled",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Demo123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"demo\",\r\n    \"password\": \"demo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/auth/signin",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

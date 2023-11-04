@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "e772fa5f-85d4-421d-800a-ee1eef65a9ad",
+		"name": "CENACE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13970381"
+	},
+	"item": [
+		{
+			"name": "https://ws01.cenace.gob.mx:8082/SWPML/SIM/SIN/MDA/01PLO-115,01PLO-115,01AAN-85/2017/11/07/2017/11/07/JSON",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://ws01.cenace.gob.mx:8082/SWPEND/SIM/SIN/MTR/CANCUN/2020/10/25/2020/10/25/JSON",
+					"protocol": "https",
+					"host": [
+						"ws01",
+						"cenace",
+						"gob",
+						"mx"
+					],
+					"port": "8082",
+					"path": [
+						"SWPEND",
+						"SIM",
+						"SIN",
+						"MTR",
+						"CANCUN",
+						"2020",
+						"10",
+						"25",
+						"2020",
+						"10",
+						"25",
+						"JSON"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://ws01.cenace.gob.mx:8082/SWPML/SIM/SIN/MDA/07ACU-115,01PLO-115,01AAN-85/2021/06/28/2021/06/29/JSON",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://ws01.cenace.gob.mx:8082/SWPML/SIM/SIN/MDA/01AAN-85/2021/08/10/2021/08/10/JSON",
+					"protocol": "https",
+					"host": [
+						"ws01",
+						"cenace",
+						"gob",
+						"mx"
+					],
+					"port": "8082",
+					"path": [
+						"SWPML",
+						"SIM",
+						"SIN",
+						"MDA",
+						"01AAN-85",
+						"2021",
+						"08",
+						"10",
+						"2021",
+						"08",
+						"10",
+						"JSON"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://ws01.cenace.gob.mx:8082/SWPEND/SIM/BCS/MTR/CONSTITUCION,LA PAZ,LOS CABOS/2020/11/08/2020/11/08/JSON",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://ws01.cenace.gob.mx:8082/SWPEND/SIM/BCA/MDA/ENSENADA/2020/03/08/2020/03/08/JSON",
+					"protocol": "https",
+					"host": [
+						"ws01",
+						"cenace",
+						"gob",
+						"mx"
+					],
+					"port": "8082",
+					"path": [
+						"SWPEND",
+						"SIM",
+						"BCA",
+						"MDA",
+						"ENSENADA",
+						"2020",
+						"03",
+						"08",
+						"2020",
+						"03",
+						"08",
+						"JSON"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

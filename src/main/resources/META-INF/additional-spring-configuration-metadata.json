@@ -1,5 +1,10 @@
 {"properties": [
   {
+    "name": "app.cors.allowed.origins",
+    "type": "java.lang.String",
+    "description": "A description for 'app.cors.allowed.origins'"
+  },
+  {
     "name": "uri.cenace.pml",
     "type": "java.lang.String",
     "description": "A description for 'uri.cenace.pml'"
@@ -35,43 +40,13 @@
     "description": "A description for 'driver.gecko.software'"
   },
   {
-    "name": "app.jwtSecret",
+    "name": "app.jwt.secret",
     "type": "java.lang.String",
-    "description": "A description for 'app.jwtSecret'"
+    "description": "A description for 'app.jwt.secret'"
   },
   {
-    "name": "app.jwtExpirationInMs",
+    "name": "app.jwt.expiration.ms",
     "type": "java.lang.String",
-    "description": "A description for 'app.jwtExpirationInMs'"
-  },
-  {
-    "name": "app.cors.allowedOrigins",
-    "type": "java.lang.String",
-    "description": "A description for 'app.cors.allowedOrigins'"
-  },
-  {
-    "name": "app.jwtSecret",
-    "type": "java.lang.String",
-    "description": "A description for 'app.jwtSecret'"
-  },
-  {
-    "name": "app.jwtExpirationInMs",
-    "type": "java.lang.String",
-    "description": "A description for 'app.jwtExpirationInMs'"
-  },
-  {
-    "name": "security.basic.enabled",
-    "type": "java.lang.String",
-    "description": "A description for 'security.basic.enabled'"
-  },
-  {
-    "name": "security.ignored",
-    "type": "java.lang.String",
-    "description": "A description for 'security.ignored'"
-  },
-  {
-    "name": "management.security.enabled",
-    "type": "java.lang.String",
-    "description": "A description for 'management.security.enabled'"
+    "description": "A description for 'app.jwt.expiration.ms'"
   }
 ]}

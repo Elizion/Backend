@@ -64,6 +64,7 @@
         	email
         FROM sistema_db.user
 		WHERE username = #{username}
+		AND enabled = 1
 	</select>
 
 	<resultMap id="getRolesByIdUserResult" type="UserRoleModel">
