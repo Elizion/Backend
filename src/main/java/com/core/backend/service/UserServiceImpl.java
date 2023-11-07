@@ -1,12 +1,13 @@
 package com.core.backend.service;
 
+import java.io.File;
 import java.io.InputStream;
 import java.util.Base64;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.apache.ibatis.exceptions.PersistenceException;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -28,37 +29,35 @@ public class UserServiceImpl implements UserService {
 	@Autowired PasswordEncoder encoder;
 	
 	@Override
-	public Date getDateNow() throws PersistenceException {
+	public Date getDateNow() throws Exception {
 		return this.userRepository.getDateNow();
 	}
 
 	@Override
-	public Integer createdUser(UserModel userModel) throws PersistenceException {
-		return this.userRepository.createdUser(userModel);
-	}
-
-	@Override
-	public String getUsername(String username) throws PersistenceException {
+	public String getUsername(String username) throws Exception {
 		return this.userRepository.getUsername(username);
 	}
 
 	@Override
-	public void createdPasswordEncode(String password, UserModel userModel) {
-		String passwordEncode = this.encoder.encode(password);
-		userModel.setPassword(passwordEncode);
+	public String getPasswordEncode(String password) throws Exception {
+		return this.encoder.encode(password);		
 	}
 	
 	@Override
-	public void createdUserPicture(MultipartFile picture, UserModel userModel) throws Exception {
+	public String getPictureToBase64(MultipartFile picture) throws Exception {
 		InputStream inputStream = picture.getInputStream();
 	    byte[] output = ServiceUtils.readFileFromStream(inputStream);
-		String b64 = Base64.getEncoder().encodeToString(output);					
-		this.userRepository.createdUserPicture(userModel.getIdUser(), b64);
-		userModel.setPicture(b64);
+		return Base64.getEncoder().encodeToString(output);
 	}
-
+		
 	@Override
-	public void createdUserRoles(Set<String> rolesRequest, UserModel userModel) throws PersistenceException {		
+	public String getPictureDefaultToBase64(String imageUserDefault) throws Exception {
+		byte[] fileContent = FileUtils.readFileToByteArray(new File(imageUserDefault));	
+		return Base64.getEncoder().encodeToString(fileContent);		
+	}
+	
+	@Override
+	public Set<RoleModel> getUserRoles(Set<String> rolesRequest) throws Exception {		
 		Set<RoleModel> roles = new HashSet<>();
 		Set<String> strRoles = rolesRequest;				
 		if (strRoles == null || strRoles.size() == 0) {			
@@ -71,10 +70,6 @@ public class UserServiceImpl implements UserService {
 					RoleModel adminRole = this.roleRepository.findByName(RoleEnum.ROLE_ADMIN.toString());
 					roles.add(adminRole);
 					break;
-				case "ROLE_MODEATOR":
-					RoleModel modRole = this.roleRepository.findByName(RoleEnum.ROLE_MODERATOR.toString());
-					roles.add(modRole);
-					break;
 				case "ROLE_USER":
 					RoleModel userRole = this.roleRepository.findByName(RoleEnum.ROLE_USER.toString());
 					roles.add(userRole);
@@ -84,15 +79,34 @@ public class UserServiceImpl implements UserService {
 					roles.add(defaulRole);
 				}
 			});
-		}		
-		userModel.setRoles(roles);
-		this.userRepository.createdUserRoles(userModel);
+		}				
+		return roles;
 	}
 
 	@Override
-	public AuthModel getUserAuth(String username) throws PersistenceException {
+	public Integer saveUser(UserModel userModel) throws Exception {
+		return this.userRepository.saveUser(userModel);
+	}
+	
+	@Override
+	public void saveUserPicture(UserModel userModel) throws Exception {
+		this.userRepository.saveUserPicture(userModel);
+	}
+	
+	@Override
+	public void saveUserRoles(UserModel userModel) throws Exception {
+		this.userRepository.saveUserRoles(userModel);
+	}
+	
+	@Override
+	public AuthModel getUserAuth(String username) throws Exception {
 		AuthModel userModel = this.userRepository.getUserAuth(username);
 		return userModel;
 	}
-	
+
+	@Override
+	public void saveUserAddress(UserModel userModel) throws Exception {
+		this.userRepository.saveUserAddress(userModel);
+	}
+		
 }

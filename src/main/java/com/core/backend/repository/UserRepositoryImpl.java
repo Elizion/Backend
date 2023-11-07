@@ -14,39 +14,45 @@ public class UserRepositoryImpl extends GenericRepository implements UserReposit
 
 	@Override
 	public Date getDateNow() throws PersistenceException {			
-		UserMapper mapper = super.getSqlSession().getMapper( UserMapper.class );
+		UserMapper mapper = super.getSqlSession().getMapper(UserMapper.class);
 		return mapper.getDateNow();    
 	}
 
 	@Override
-	public Integer createdUser(UserModel userModel) throws PersistenceException {
-		UserMapper mapper = super.getSqlSession().getMapper( UserMapper.class );		
-		mapper.createdUser(userModel);
-		return userModel.getIdUser();
-	}
-
-	@Override
 	public String getUsername(String username) throws PersistenceException {
-		UserMapper mapper = super.getSqlSession().getMapper( UserMapper.class );
+		UserMapper mapper = super.getSqlSession().getMapper(UserMapper.class);
 		return mapper.getUsername(username);
 	}
 
 	@Override
-	public void createdUserPicture(Integer idUser, String b64) throws PersistenceException {
-		UserMapper mapper = super.getSqlSession().getMapper( UserMapper.class );
-		mapper.createdUserImage(idUser, b64);		
+	public Integer saveUser(UserModel userModel) throws PersistenceException {
+		UserMapper mapper = super.getSqlSession().getMapper(UserMapper.class);		
+		mapper.saveUser(userModel);
+		return userModel.getIdUser();
+	}
+	
+	@Override
+	public void saveUserPicture(UserModel userModel) throws PersistenceException {
+		UserMapper mapper = super.getSqlSession().getMapper(UserMapper.class);		
+		mapper.saveUserPicture(userModel);		
 	}
 
 	@Override
-	public void createdUserRoles(UserModel userModel) throws PersistenceException {
-		UserMapper mapper = super.getSqlSession().getMapper( UserMapper.class );
-		mapper.createdUserRoles(userModel);
+	public void saveUserRoles(UserModel userModel) throws PersistenceException {
+		UserMapper mapper = super.getSqlSession().getMapper(UserMapper.class);
+		mapper.saveUserRoles(userModel);
 	}
 
+	@Override
+	public void saveUserAddress(UserModel userModel) throws PersistenceException {
+		UserMapper mapper = super.getSqlSession().getMapper(UserMapper.class);
+		mapper.saveUserAddress(userModel);
+	}
+	
 	@Override
 	public AuthModel getUserAuth(String username) throws PersistenceException {
-		UserMapper mapper = super.getSqlSession().getMapper( UserMapper.class );
-		return mapper.getUserAuth(username);		
+		UserMapper mapper = super.getSqlSession().getMapper(UserMapper.class);
+		return mapper.getUserAuth(username);
 	}
 
 }

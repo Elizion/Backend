@@ -10,15 +10,17 @@ import com.core.backend.model.UserModel;
 public interface UserRepository {
 
 	public Date getDateNow() throws PersistenceException;
-
-	public Integer createdUser(UserModel userModel) throws PersistenceException;
-
+	
 	public String getUsername(String username) throws PersistenceException;
+	
+	public Integer saveUser(UserModel userModel) throws PersistenceException;
 
-	public void createdUserPicture(Integer idUser, String b64) throws PersistenceException;
+	public void saveUserPicture(UserModel userModel) throws PersistenceException;
 
-	public void createdUserRoles(UserModel userModel) throws PersistenceException;
-
-	public AuthModel getUserAuth(String username) throws PersistenceException;
+	public void saveUserRoles(UserModel userModel) throws PersistenceException;
+	
+	public void saveUserAddress(UserModel userModel) throws PersistenceException;
+	
+	public AuthModel getUserAuth(String username) throws PersistenceException;	
 
 }

@@ -39,7 +39,7 @@ public class ServiceUtils {
 		return valor;
 	}
 
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings("removal")
 	public static Double safeAdd(Double a, Double b) {
 		Double valor = null;
 		if (a != null || b != null)
@@ -47,7 +47,7 @@ public class ServiceUtils {
 		return valor;
 	}
 
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings("removal")
 	public static Double safeMinus(Double a, Double b) {
 		Double valor = null;
 		if (a != null || b != null)
@@ -55,7 +55,7 @@ public class ServiceUtils {
 		return valor;
 	}
 
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings("removal")
 	public static Double safeMul(Double a, Double b) {
 		Double valor = null;
 		if (a != null && b != null)
@@ -63,7 +63,7 @@ public class ServiceUtils {
 		return valor;
 	}
 
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings("removal")
 	public static Double safeMul(Double a, int b) {
 		Double valor = null;
 		if (a != null)
@@ -78,7 +78,7 @@ public class ServiceUtils {
 		return valor;
 	}
 
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings("removal")
 	public static Double safeDiv(Double a, Double b) {
 		Double valor = null;
 		if (a != null && b != null && b.doubleValue() != 0.0D)
@@ -90,14 +90,14 @@ public class ServiceUtils {
 		return !(a != null && a.doubleValue() != 0.0D);
 	}
 
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings("removal")
 	public static Double safeRound(Double x) {
 		if (x == null)
 			return null;
 		return new Double(roundDouble(x.doubleValue(), 0));
 	}
 
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings("removal")
 	public static Double safeRound(Double x, int y) {
 		if (x == null)
 			return null;

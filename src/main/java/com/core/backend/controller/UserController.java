@@ -27,7 +27,7 @@ public class UserController {
 		Date dateNow = null;
 		try {
 			dateNow = this.userService.getDateNow();
-		} catch (RuntimeException e) {
+		} catch (Exception e) {
 			return ResponseHandler.generateResponseSuccess(MessageEnum.GET_DATE_ERROR.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, e.toString());
 		}
 		return ResponseHandler.generateResponseSuccess(MessageEnum.GET_DATE_OK.getMessage(), HttpStatus.OK, dateNow);

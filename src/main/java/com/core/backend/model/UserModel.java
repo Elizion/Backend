@@ -10,7 +10,8 @@ public class UserModel {
 	public String password;
 	public Boolean enabled;
 	public String picture;
-	public Set<RoleModel> roles;
+	public Set<RoleModel> roles;	
+	public AddressModel address;
 		
 	public Integer getIdUser() {
 		return idUser;
@@ -53,6 +54,12 @@ public class UserModel {
 	}
 	public void setRoles(Set<RoleModel> roles) {
 		this.roles = roles;
+	}
+	public AddressModel getAddress() {
+		return address;
+	}
+	public void setAddress(AddressModel address) {
+		this.address = address;
 	}
 	
 }

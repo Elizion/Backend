@@ -13,7 +13,7 @@
         WHERE username = #{username} 
     </select>
 
-	<insert id="createdUser" parameterType="com.core.backend.model.UserModel" useGeneratedKeys="true" keyProperty="userModel.idUser" keyColumn="id_user">
+	<insert id="saveUser" parameterType="com.core.backend.model.UserModel" useGeneratedKeys="true" keyProperty="userModel.idUser" keyColumn="id_user">
 	    INSERT INTO sistema_db.user(
 	    	username,
 	    	password,
@@ -28,16 +28,16 @@
 	    	NOW())
 	</insert>
 	
-	<insert id="createdUserImage">
+	<insert id="saveUserPicture">
 	    INSERT INTO sistema_db.user_picture(
 	    	id_user,
 	    	picture) 
 	    VALUES (
-	    	#{idUser},
-	    	#{b64})
+	    	#{userModel.idUser},
+	    	#{userModel.picture})
 	</insert>
-	
-	<insert id="createdUserRoles" parameterType="java.util.Set">
+		
+	<insert id="saveUserRoles" parameterType="java.util.Set">
 	    INSERT INTO sistema_db.user_role (
 	    id_user,
 	    id_role)
@@ -48,6 +48,28 @@
 	    </foreach>
 	</insert>
     
+	<insert id="saveUserAddress">
+	    INSERT INTO sistema_db.user_address(
+	    	id_user, 
+	    	postal_code, 
+	    	municipality, 
+	    	interior_number, 
+	    	exterior_number, 
+	    	street, 
+	    	between_street, 
+	    	reference
+		) 
+	    VALUES (
+	    	#{userModel.idUser},
+	    	#{userModel.address.postalCode},
+	    	#{userModel.address.municipality},
+	    	#{userModel.address.interiorNumber},
+	    	#{userModel.address.exteriorNumber},
+	    	#{userModel.address.street},
+	    	#{userModel.address.betweenStreet},
+	    	#{userModel.address.reference})
+	</insert>
+	
 	<resultMap id="getUserAuthResult" type="AuthModel">
 		<id column="id_user" property="idUser"/>
 		<result column="username" property="username"/>

@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.exceptions.PersistenceException;
 
 import com.core.backend.model.AuthModel;
 import com.core.backend.model.UserModel;
@@ -12,15 +13,17 @@ import com.core.backend.model.UserModel;
 public interface UserMapper {
 	
 	public Date getDateNow();
+
+	public String getUsername(@Param("username") String username) throws PersistenceException;
 	
-	public void createdUser(@Param("userModel") UserModel userModel);
+	public void saveUser(@Param("userModel") UserModel userModel) throws PersistenceException;
 
-	public String getUsername(@Param("username") String username);
+	public void saveUserPicture(@Param("userModel") UserModel userModel) throws PersistenceException;
 
-	public void createdUserImage(@Param("idUser") Integer idUser, @Param("b64") String b64);
+	public void saveUserRoles(@Param("userModel") UserModel userModel) throws PersistenceException;
+	
+	public void saveUserAddress(@Param("userModel") UserModel userModel) throws PersistenceException;
 
-	public void createdUserRoles(@Param("userModel") UserModel userModel);
-
-	public AuthModel getUserAuth(@Param("username") String username);
+	public AuthModel getUserAuth(@Param("username") String username) throws PersistenceException;	
 	
 }
