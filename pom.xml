@@ -19,7 +19,6 @@
 	<properties>	
         <java.version>17</java.version>
         <jjwt.version>0.11.2</jjwt.version>
-        <maven-jaxb2-plugin.version>0.14.0</maven-jaxb2-plugin.version>
     </properties>	
  
 	<dependencies>
@@ -198,10 +197,11 @@
 		</dependency>
 		
 		<dependency>
-			<groupId>wsdl4j</groupId>
-			<artifactId>wsdl4j</artifactId>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>mail</artifactId>
+		    <version>1.4.4</version>
 		</dependency>
-		
+
 	</dependencies>
 
 	<build>
@@ -216,38 +216,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.jvnet.jaxb2.maven2</groupId>
-                <artifactId>maven-jaxb2-plugin</artifactId>
-                <version>${maven-jaxb2-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>example-xml</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <generateDirectory>target/generated-sources/xjc/</generateDirectory>
-                            <schemaDirectory>${basedir}/src/main/resources/schemas/xsd</schemaDirectory>
-                            <schemaIncludes>
-                                <include>**/*.xsd</include>
-                            </schemaIncludes>
-                            <bindingDirectory>${basedir}/src/main/resources/schemas/xjb</bindingDirectory>
-                            <bindingIncludes>
-                                <include>**/*.xjb</include>
-                            </bindingIncludes>
-                        </configuration>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.glassfish.jaxb</groupId>
-                        <artifactId>jaxb-runtime</artifactId>
-                        <version>2.3.3</version>
-                    </dependency>
-                </dependencies>
-            </plugin>                 
+            </plugin>              
 		</plugins>
     </build>   
 

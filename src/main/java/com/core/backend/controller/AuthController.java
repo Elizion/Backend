@@ -86,22 +86,7 @@ public class AuthController {
 			if (!isValidPassword) {
 				return ResponseHandler.generateResponseError(MessageEnum.INVALID_PASSWORD.getMessage(), HttpStatus.BAD_REQUEST, isValidPassword);
 			}
-			
-			System.out.println(username);
-			System.out.println(passwordEncode);
-			System.out.println(username+email);
-			System.out.println(pictureB64);
-			System.out.println(enabled);
-			System.out.println(roles.size());
-			
-			System.out.println(postalCode);
-			System.out.println(municipality);
-			System.out.println(interiorNumber);
-			System.out.println(exteriorNumber);
-			System.out.println(street);
-			System.out.println(betweenStreet);
-			System.out.println(reference);
-			
+						
 			userModel.setUsername(username);
 			userModel.setPassword(passwordEncode);
 			userModel.setEmail(username+email);				
