@@ -58,11 +58,9 @@ public class TestServiceImpl implements TestService {
 	private static final String SWPML = "SWPML";
 	private static final String SWPEND = "SWPEND";
 	
-	@Autowired
-    private Environment env;
+	@Autowired private Environment env;
 
-	@Autowired
-	private TestRepository testRepository;
+	@Autowired private TestRepository testRepository;
     
     public String propertyPml() {
         return env.getProperty("uri.cenace.pml");

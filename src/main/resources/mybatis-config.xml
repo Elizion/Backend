@@ -29,6 +29,7 @@
 		<mapper resource="mapper/TestMapper.xml"/>
 		<mapper resource="mapper/UserMapper.xml"/>
 		<mapper resource="mapper/RoleMapper.xml"/>
+		<mapper resource="mapper/EmailMapper.xml"/>
     </mappers>
     
 </configuration>

@@ -11,8 +11,11 @@ public enum MessageEnum {
 	ERROR_GET_ID_USER("Error al obtener el ID del usuario."),
 	DUPLICATE_USER("El nombre de usuario ya existe, intente con otro."),
 	
-	INVALID_PASSWORD("El password debera tener al menos una mayuscula, un digito y al menos 6 digitos de longitud.");
+	INVALID_PASSWORD("El password debera tener al menos una mayuscula, un digito y al menos 6 digitos de longitud."),
 
+	EMAIL_SEND_OK("Email enviado correctamente."),		
+	EMAIL_SEND_ERROR("Error al enviar el correo.");
+	
 	private String message;
 	
 	MessageEnum(String message) {
